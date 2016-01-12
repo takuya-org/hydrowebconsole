@@ -1,4 +1,3 @@
-import json
 import sqlite3
 class DbOperation(object):
     DIR = 'dbtest/'
@@ -17,7 +16,7 @@ class DbOperation(object):
         for date, temp in c.fetchall():
             date_list.append(date)
             temp_list.append(temp)
-        return json.dumps({'temperature':temp_list, 'period':date_list})
+        return {'temperature':temp_list, 'period':date_list}
 
     def connectionClose():
         self.con.close()
