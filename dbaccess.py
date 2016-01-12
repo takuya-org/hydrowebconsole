@@ -6,7 +6,7 @@ class DbOperation(object):
     def __init__(self):
         self.con = sqlite3.Connection(DbOperation.DIR + DbOperation.FILE_NAME)
         c = self.con.cursor()
-        c.execute("""CREATE TABLE IF NOT EXISTS temp(date text, time text, temp_c real, PRIMARY KEY(date, time))""")
+        c.execute("""CREATE TABLE IF NOT EXISTS temp(date text, temp_c real, PRIMARY KEY(date))""")
 
     def selectRecord(self, limit, offset):
         c = self.con.cursor()
