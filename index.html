@@ -18,12 +18,22 @@
         <canvas id="myChart" class="data-section-graph col-xs-12"></canvas>
     </div>
 </div>
+<div>
+</div>
 <script src="/js/temperature_graph.js"></script>
 <script>
     (function() {
         hwc.temperatureGraph(
-                ["January", "February", "March", "April", "May", "June", "July"],
-                [28, 48, 40, 19, 96, 27, 100],
+                [
+                    % for v in temp_list['temperature']:
+                        '{{v}}',
+                    % end
+                ],
+                [
+                    % for v in temp_list['period']:
+                        {{v}},
+                    % end
+                ],
                 document.querySelector('#myChart')
         );
     })();

@@ -3,7 +3,11 @@ from bottle import static_file
 
 @route('/')
 def index():
-    return template('index.html')
+    temp_list = {
+        'temperature': ["January", "February", "March", "April", "May", "June", "July"],
+        'period': [28, 48, 40, 19, 96, 27, 100]
+    }
+    return template('index.html', temp_list=temp_list)
 
 @route('/node/<filepath:path>')
 def node_static(filepath):
