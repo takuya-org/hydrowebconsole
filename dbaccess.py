@@ -1,11 +1,11 @@
 import json
 import sqlite3
-class db_operation(object):
+class DbOperation(object):
     DIR = 'dbtest/'
     FILE_NAME = 'hydroponics.db'
 
     def __init__(self):
-        self.con = sqlite3.Connection(db_operation.DIR + db_operation.FILE_NAME)
+        self.con = sqlite3.Connection(DbOperation.DIR + DbOperation.FILE_NAME)
         c = self.con.cursor()
         c.execute("""CREATE TABLE IF NOT EXISTS temp(date text, time text, temp_c real, PRIMARY KEY(date, time))""")
 
