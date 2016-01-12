@@ -1,12 +1,12 @@
 from bottle import route, run, template
 from bottle import static_file
+import dbaccess
 
 @route('/')
 def index():
-    temp_list = {
-        'temperature': ["January", "February", "March", "April", "May", "June", "July"],
-        'period': [28, 48, 40, 19, 96, 27, 100]
-    }
+    dbo = dbaccess.DbOperation()
+    temp_list = dbo.selectRecord(7, 0)
+    dbo.connectionClose()
     return template('index.html', temp_list=temp_list)
 
 @route('/node/<filepath:path>')

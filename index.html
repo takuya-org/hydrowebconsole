@@ -25,12 +25,12 @@
     (function() {
         hwc.temperatureGraph(
                 [
-                    % for v in temp_list['temperature']:
+                    % for v in temp_list['period']:
                         '{{v}}',
                     % end
                 ],
                 [
-                    % for v in temp_list['period']:
+                    % for v in temp_list['temperature']:
                         {{v}},
                     % end
                 ],

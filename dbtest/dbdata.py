@@ -5,7 +5,7 @@ FILE_NAME = 'hydroponics.db'
 
 con = sqlite3.Connection(DIR + FILE_NAME)
 c = con.cursor()
-c.execute("""CREATE TABLE IF NOT EXISTS temp(date text, temp_c real, PRIMARY KEY(date))""")
+c.execute("""CREATE TABLE IF NOT EXISTS temp(date int, temp_c real, PRIMARY KEY(date))""")
 
 c = con.cursor()
 c.execute("INSERT INTO temp(date, temp_c) VALUES(?, ?)", ('2016-01-12', 11.5))
