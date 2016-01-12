@@ -10,7 +10,7 @@ class DbOperation(object):
 
     def selectRecord(self, limit, offset):
         c = self.con.cursor()
-        c.execute("SELECT * FROM temp LIMIT ? OFFSET ?", (limit, offset))
+        c.execute("SELECT * FROM temp ORDER BY date DESC LIMIT ? OFFSET ?", (limit, offset))
         date_list = []
         temp_list = []
         for date, temp in c.fetchall():
