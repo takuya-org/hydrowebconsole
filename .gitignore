@@ -1,2 +1,6 @@
 .idea/*
 !.idea/codeStyleSettings.xml
+
+node_modules
+
+__pycache__
