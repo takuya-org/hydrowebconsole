@@ -1,10 +1,11 @@
+import os
 import sqlite3
+
 class DbOperation(object):
-    DIR = 'dbtest/'
-    FILE_NAME = 'hydroponics.db'
+    PATH = 'DBPATH'
 
     def __init__(self):
-        self.con = sqlite3.Connection(DbOperation.DIR + DbOperation.FILE_NAME)
+        self.con = sqlite3.Connection(os.environ.get(PATH))
         c = self.con.cursor()
         c.execute("""CREATE TABLE IF NOT EXISTS temp(date int, temp_c real, PRIMARY KEY(date))""")
 
