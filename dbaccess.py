@@ -5,7 +5,7 @@ class DbOperation(object):
     PATH = 'DBPATH'
 
     def __init__(self):
-        self.con = sqlite3.Connection(os.environ.get(PATH))
+        self.con = sqlite3.Connection(os.environ.get(DbOperation.PATH))
         c = self.con.cursor()
         c.execute("""CREATE TABLE IF NOT EXISTS temp(date int, temp_c real)""")
 
