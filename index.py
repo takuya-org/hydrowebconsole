@@ -1,6 +1,7 @@
 from bottle import route, run, template
 from bottle import static_file
 import dbaccess
+import subprocess
 
 @route('/')
 def index():
@@ -22,4 +23,7 @@ def js_static(filepath):
     return static_file(filepath, root='./js')
 
 
-run(host="localhost", port=8080, debug=True)
+cmd = 'hostname'
+p = subprocess.check_output(cmd)
+name = str(p,encoding='utf-8')
+run(host=name.rstrip(), port=8080, debug=True)
