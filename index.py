@@ -1,5 +1,6 @@
 from bottle import route, run, template
 from bottle import static_file
+from bottle import HTTPResponse
 import dbaccess
 import subprocess
 import hydro_ctl
@@ -7,9 +8,10 @@ import hydro_ctl
 
 @route('/')
 def index():
-    dbo = dbaccess.DbOperation()
-    temp_list = dbo.selectRecord(7, 0)
-    dbo.connectionClose()
+    # dbo = dbaccess.DbOperation()
+    # temp_list = dbo.selectRecord(7, 0)
+    # dbo.connectionClose()
+    temp_list = {'period':[], 'temperature':[]}
     return template('index.html', temp_list=temp_list)
 
 
@@ -32,14 +34,24 @@ def js_static(filepath):
 def startMain():
     ctl = hydro_ctl.HydroControl()
     ctl.startMain()
-    return 'start'
+    cmd = 'hostname'
+    p = subprocess.check_output(cmd)
+    name = str(p, encoding='utf-8')
+    r = HTTPResponse(status=302)
+    r.set_header('Location', 'http://' + name.rstrip() + ':8080')
+    return r
 
 
 @route('/stop')
 def stopMain():
     ctl = hydro_ctl.HydroControl()
     ctl.stopMain()
-    return 'stop'
+    cmd = 'hostname'
+    p = subprocess.check_output(cmd)
+    name = str(p, encoding='utf-8')
+    r = HTTPResponse(status=302)
+    r.set_header('Location', 'http://' + name.rstrip() + ':8080')
+    return r
 
 
 cmd = 'hostname'
