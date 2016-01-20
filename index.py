@@ -2,6 +2,7 @@ from bottle import route, run, template
 from bottle import static_file
 import dbaccess
 import subprocess
+import hydro_ctl
 
 
 @route('/')
@@ -25,6 +26,20 @@ def css_static(filepath):
 @route('/js/<filepath:path>')
 def js_static(filepath):
     return static_file(filepath, root='./js')
+
+
+@route('/start')
+def startMain():
+    ctl = hydro_ctl.HydroControl()
+    ctl.startMain()
+    return 'start'
+
+
+@route('/stop')
+def stopMain():
+    ctl = hydro_ctl.HydroControl()
+    ctl.stopMain()
+    return 'stop'
 
 
 cmd = 'hostname'
