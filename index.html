@@ -10,21 +10,24 @@
 </head>
 <body>
 <header>
-    <h1>Hydroponics Web Console</h1>
+    <div class="row" style="width: 100%;">
+        <div class="col-xs-10">
+            <h1>Hydroponics Web Console</h1>
+        </div>
+        <div class="row col-xs-2">
+            <div class="col-xs-offset-2 col-xs-5 hydro-ctl-btn">
+                <a href="/start">Start</a>
+            </div>
+            <div class="col-xs-5 hydro-ctl-btn">
+                <a href="/stop">Stop</a>
+            </div>
+        </div>
+    </div>
 </header>
 <div class="row">
     <div class="row col-xs-offset-1 col-xs-10">
         <h2 class="col-xs-12 data-section-header">温度</h2>
         <canvas id="myChart" class="data-section-graph col-xs-12"></canvas>
-    </div>
-    <div class="row col-xs-offset-1 col-xs-10">
-        <h2 class="col-xs-12 data-section-header">起動</h2>
-        <div class="col-xs-offset-1 col-xs-4 hydro-ctl-btn">
-            <a href="/start">Start</a>
-        </div>
-        <div class="col-xs-offset-2 col-xs-4 hydro-ctl-btn">
-            <a href="/stop">Stop</a>
-        </div>
     </div>
 </div>
 <div>
