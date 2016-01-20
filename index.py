@@ -8,10 +8,9 @@ import hydro_ctl
 
 @route('/')
 def index():
-    # dbo = dbaccess.DbOperation()
-    # temp_list = dbo.selectRecord(7, 0)
-    # dbo.connectionClose()
-    temp_list = {'period':[], 'temperature':[]}
+    dbo = dbaccess.DbOperation()
+    temp_list = dbo.selectRecord(7, 0)
+    dbo.connectionClose()
     return template('index.html', temp_list=temp_list)
 
 
