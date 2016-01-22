@@ -11,11 +11,11 @@ class DbOperation(object):
 
     def selectRecord(self, limit, offset):
         c = self.con.cursor()
-        c.execute("SELECT * FROM temp ORDER BY date DESC LIMIT ? OFFSET ?", (limit, offset))
+        c.execute("SELECT * FROM temp ORDER BY date, time DESC LIMIT ? OFFSET ?", (limit, offset))
         date_list = []
         temp_list = []
         for date, time, temp in c.fetchall():
-            date_list.append(date + ' ' + time)
+            date_list.insert(0, date + ' ' + time)
             temp_list.append(temp)
         return {'temperature':temp_list, 'period':date_list}
 
